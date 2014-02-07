@@ -34,13 +34,15 @@ PDFS=$(SRC:.md=.pdf)
 HTML=$(SRC:.md=.html)
 TEX=$(SRC:.md=.tex)
 ODT=$(SRC:.md=.odt)
+DOCX=$(SRC:.md=.docx)
 
-all:	$(PDFS) $(HTML) $(TEX) $(ODT)
+all:	$(PDFS) $(HTML) $(TEX) $(ODT) $(DOCX)
 
 pdf:	clean $(PDFS)
 html:	clean $(HTML)
 tex:	clean $(TEX)
 odt:	clean $(ODT)
+docx:	clean $(DOCX)
 
 %.html:	%.md
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w html -S --template=$(PREFIX)/templates/html.template --css=$(PREFIX)/marked/kultiad-serif.css --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) -o $@ $<
@@ -48,15 +50,14 @@ odt:	clean $(ODT)
 %.odt:	%.md
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S --template=$(PREFIX)/templates/odt.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) -o $@ $<
 
-# TODO: Make this work
-# %.docx: %.odt
-	# /Applications/LibreOffice.app/Contents/MacOS/soffice.bin --invisible --convert-to docx $@ $<
-
 %.tex:	%.md
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w latex -s -S --latex-engine=xelatex --template=$(PREFIX)/templates/xelatex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) -o $@ $<
 
 %.pdf:	%.md
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -s -S --latex-engine=xelatex --template=$(PREFIX)/templates/xelatex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) -o $@ $<
+
+%.docx:	%.odt
+	/Applications/LibreOffice.app/Contents/MacOS/soffice.bin --invisible --convert-to docx $@ $<
 
 clean:
 	rm -f *.html *.pdf *.tex *.odt
