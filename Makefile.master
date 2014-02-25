@@ -10,8 +10,8 @@
 ## -	You can specify an output format with `make tex`, `make pdf`,  
 ## - 	`make html`, `make odt`, or `make docx`
 ## -	Doing `make clean` will only remove all .tex, .html, .pdf, .odt,
-##  and .docx files in your working directory *that have the same name
-##  as your Markdown files*. Other files with these extensions will be safe
+##	and .docx files in your working directory *that have the same name
+##	as your Markdown files*. Other files with these extensions will be safe.
 
 ## Markdown extension (e.g. md, markdown, mdown).
 MEXT = md
