@@ -59,7 +59,7 @@ docx:	clean $(DOCX)
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -s -S --latex-engine=xelatex --template=$(PREFIX)/templates/xelatex.template --filter pandoc-citeproc --csl=$(PREFIX)/csl/$(CSL).csl --bibliography=$(BIB) -o $@ $<
 
 %.docx:	%.odt
-	/Applications/LibreOffice.app/Contents/MacOS/soffice.bin --invisible --convert-to docx $@ $<
+	/Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $<
 
 clean:
 	rm -f $(addsuffix .html, $(BASE)) $(addsuffix .pdf, $(BASE)) $(addsuffix .tex, $(BASE)) $(addsuffix .odt, $(BASE)) $(addsuffix .docx, $(BASE))
