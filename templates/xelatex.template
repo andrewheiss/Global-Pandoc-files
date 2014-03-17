@@ -44,6 +44,12 @@ $endif$
 
 \date{}
 
+\newcommand{\hangstart}%
+{\setlength{\parindent}{-0.2in}%
+\setlength{\leftskip}{0.2in}%
+% \setlength{\parskip}{4pt}%
+\noindent}
+
 
 \begin{document}  
 \setkeys{Gin}{width=1\textwidth} 	
