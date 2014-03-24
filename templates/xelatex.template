@@ -1,7 +1,9 @@
 %!TEX program = xelatex
 \documentclass[11pt,article,oneside]{memoir}
 \usepackage{hikma-preamble-xelatex}
-% \input{vc}
+$if(listings)$
+\input{vc}
+$endit$
 
 $if(listings)$
 \usepackage{listings}
