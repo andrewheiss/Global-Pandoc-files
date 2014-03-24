@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 \documentclass[11pt,article,oneside]{memoir}
-\usepackage{org-preamble-xelatex}
+\usepackage{hikma-preamble-xelatex}
 % \input{vc}
 
 $if(listings)$
@@ -32,29 +32,22 @@ $if(graphics)$
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
+
 $if(title)$
 \title{\bigskip \bigskip $title$}
 $endif$ 
 
-%\author{$for(author)$$author$$sep$\\$endfor$}
 
-\author{$for(author)$\Large $author.name$\vspace{0.05in} \newline\normalsize\emph{$author.affiliation$} \newline\footnotesize \url{$author.email$}\vspace*{0.2in}\newline $sep$ \and $endfor$}
-
-%\author{$for(author)$$author.name$ ($author.affiliation$)$sep$ \and $endfor$}
+\author{
+  $for(author)$
+    \Large $author.name$\vspace{0.05in} \newline
+    \normalsize\emph{$author.affiliation$} \newline
+    \footnotesize \url{$author.email$}\vspace*{0.2in}\newline 
+    $sep$ \and 
+  $endfor$
+}
 
 \date{}
-
-% Command for manually adding hanging indents to bibliographies
-\newcommand{\hangstart}%
-{\setlength{\parindent}{-0.2in}%
-\setlength{\leftskip}{0.2in}%
-% \setlength{\parskip}{4pt}%
-\noindent}
-
-\usepackage[all,defaultlines=2]{nowidow}  % Fix widows and orphans
-
-\urlstyle{same}  % Don't typeset URLs in a monospaced font
-
 
 \begin{document}
 \setkeys{Gin}{width=1\textwidth} 	
@@ -65,23 +58,20 @@ $endif$
 $if(chapterstyle)$
 \chapterstyle{$chapterstyle$}
 $else$
-\chapterstyle{article-4-sans} 
-% \chapterstyle{memo-comments} 
+\chapterstyle{hikma-article} 
 $endif$
 
 $if(pagestyle)$
 \pagestyle{$pagestyle$}
 $else$
-\pagestyle{kjh} 
+\pagestyle{ath} 
 $endif$
 
-% \published{$date$. Incomplete Draft. Please do not cite without permission.}
 $if(published)$
 \published{$date$. $published$}
 $else$
 \published{$date$}
 $endif$
-
 
 $if(title)$
 \maketitle
@@ -96,13 +86,12 @@ $if(toc)$
 $endif$
 
 $if(abstract)$
-
 \begin{abstract}
-
 \noindent $abstract$
-
+\bigskip
 \end{abstract}
-
+$else$
+\vskip 5em
 $endif$
 
 $body$
