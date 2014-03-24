@@ -44,14 +44,19 @@ $endif$
 
 \date{}
 
+% Command for manually adding hanging indents to bibliographies
 \newcommand{\hangstart}%
 {\setlength{\parindent}{-0.2in}%
 \setlength{\leftskip}{0.2in}%
 % \setlength{\parskip}{4pt}%
 \noindent}
 
+\usepackage[all,defaultlines=2]{nowidow}  % Fix widows and orphans
 
-\begin{document}  
+\urlstyle{same}  % Don't typeset URLs in a monospaced font
+
+
+\begin{document}
 \setkeys{Gin}{width=1\textwidth} 	
 \setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
 \setsansfont[Mapping=tex-text]{Source Sans Pro} 
