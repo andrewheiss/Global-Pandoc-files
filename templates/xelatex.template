@@ -61,9 +61,19 @@ $endif$
 \setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
 \setsansfont[Mapping=tex-text]{Source Sans Pro} 
 \setmonofont[Mapping=tex-text,Scale=0.8]{Consolas}
-% \chapterstyle{article-4-sans} 
-\chapterstyle{memo-comments} 
-\pagestyle{kjh}
+
+$if(chapterstyle)$
+\chapterstyle{$chapterstyle$}
+$else$
+\chapterstyle{article-4-sans} 
+% \chapterstyle{memo-comments} 
+$endif$
+
+$if(pagestyle)$
+\pagestyle{$pagestyle$}
+$else$
+\pagestyle{kjh} 
+$endif$
 
 % \published{$date$. Incomplete Draft. Please do not cite without permission.}
 $if(published)$
