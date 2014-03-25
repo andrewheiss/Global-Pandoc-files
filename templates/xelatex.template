@@ -3,7 +3,7 @@
 \usepackage{hikma-preamble-xelatex}
 $if(listings)$
 \input{vc}
-$endit$
+$endif$
 
 $if(listings)$
 \usepackage{listings}
