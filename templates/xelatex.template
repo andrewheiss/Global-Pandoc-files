@@ -1,7 +1,7 @@
 %!TEX program = xelatex
 \documentclass[11pt,article,oneside]{memoir}
 \usepackage{hikma-preamble-xelatex}
-$if(listings)$
+$if(vc)$
 \input{vc}
 $endif$
 
@@ -67,6 +67,10 @@ $if(pagestyle)$
 \pagestyle{$pagestyle$}
 $else$
 \pagestyle{ath} 
+$endif$
+
+$if(vc)$
+\copypagestyle{plain}{athgit_first}  % Modified first page with git information
 $endif$
 
 $if(published)$
