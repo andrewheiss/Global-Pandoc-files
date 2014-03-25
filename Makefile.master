@@ -72,7 +72,7 @@ bib:	$(BIB)
 	/Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $<
 
 %.bib: %.md
-	bib_extract $< $@
+	bib_extract --bibtex_file $(BIB) $< $@
 
 clean:
 	rm -f $(addsuffix .html, $(BASE)) $(addsuffix .pdf, $(BASE)) $(addsuffix .tex, $(BASE)) $(addsuffix .odt, $(BASE)) $(addsuffix .docx, $(BASE))
