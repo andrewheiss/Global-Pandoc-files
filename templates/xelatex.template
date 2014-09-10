@@ -39,7 +39,9 @@ $if(title)$
 \title{\bigskip \bigskip $title$}
 $endif$ 
 
-
+$if(blinded)$
+\author{~}
+$else$
 \author{
   $for(author)$
     \Large $author.name$\vspace{0.05in} \newline
@@ -48,8 +50,30 @@ $endif$
     $sep$ \and 
   $endfor$
 }
+$endif$
 
 \date{}
+
+
+% Add PDF metadata
+$if(blinded)$
+\hypersetup{pdfinfo={
+  Title={},
+  Author={},
+  Creator={Markdown, pandoc, and TeX}
+  % Subject={}
+  % Keywords={things, go, here}
+}}
+$else$
+\hypersetup{pdfinfo={
+  Title={$title$},
+  Author={$for(author)$$author.name$$sep$, $endfor$},
+  Creator={Markdown, pandoc, and TeX}
+  % Subject={},
+  % Keywords={things, go, here}
+}}
+$endif$
+
 
 \begin{document}
 \setkeys{Gin}{width=1\textwidth} 	
