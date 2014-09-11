@@ -13,19 +13,20 @@ $for(header-includes)$
 $endfor$
 <office:body>
 <office:text>
-$if(published)$
-<text:h text:style-name="Published message">$published$</text:h>
-$endif$
 
 $if(title)$
 <text:h text:style-name="Title">$title$</text:h>
 $endif$
 
+$if(blinded)$
+ 
+$else$
 $for(author)$
 <text:p text:style-name="Author">$author.name$</text:p>
 <text:p text:style-name="Affiliation">$author.affiliation$</text:p>
 <text:p text:style-name="Email">$author.email$</text:p>
 $endfor$
+$endif$
 
 $if(date)$
 <text:p text:style-name="Date">$date$</text:p>
@@ -34,6 +35,8 @@ $endif$
 $if(abstract)$
 <text:p text:style-name="Abstract"><text:span text:style-name="Bold">Abstract:</text:span> $abstract$</text:p>
 $endif$
+
+<text:p text:style-name="Faux page break"> </text:p>
 
 $for(include-before)$
 $include-before$

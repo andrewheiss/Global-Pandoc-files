@@ -1,0 +1,75 @@
+# Extensionless name of Markdown file
+#! MARKDOWN_FILE = PUT THE NAME HERE
+
+# Variables
+#! PREFIX = /Users/andrew/.pandoc
+#! BIB_FILE = /Users/andrew/Dropbox/Readings/Papers.bib
+#! CSL = american-political-science-association
+
+
+# Other common CSLs: 
+#   * chicago-fullnote-bibliography
+#   * chicago-syllabus-no-bib
+#   * apa
+
+# To add version control footer support in PDFs:
+#   1. Run vcinit in the directory
+#   2. Place `./vc` at the front of the formula
+#   3. Add `-V vc` to the pandoc command
+#   4. Change pagestyle to athgit instead of ath
+
+# NB: There are no image captions when converting from Markdown to odt. Captions
+# do work when converting from Markdown to docx, but you can't use a custom
+# template with docx output.
+
+generate output:
+  help: convert Markdown file to different formats
+
+  pdf:
+    help: convert to PDF
+    dependencies:
+      - $MARKDOWN_FILE.md
+    formula: >
+      replace_includes $MARKDOWN_FILE.md | pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w latex -s -S --default-image-extension=pdf --latex-engine=xelatex --template=$PREFIX/templates/xelatex.template --filter pandoc-citeproc --csl=$PREFIX/csl/$CSL.csl --bibliography=$BIB_FILE -V chapterstyle=hikma-article -V pagestyle=ath -o $MARKDOWN_FILE.pdf $MARKDOWN_FILE.md
+    output: 
+      - $MARKDOWN_FILE.pdf
+
+  word:
+    help: convert to nice looking Word file through LibreOffice
+    dependencies:
+      - $MARKDOWN_FILE.md
+    formula: >
+      replace_includes $MARKDOWN_FILE.md | replace_pdfs | pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S --default-image-extension=png --template=$PREFIX/templates/odt.template --reference-odt=$PREFIX/styles/reference.odt --filter pandoc-citeproc --csl=$PREFIX/csl/$CSL.csl --bibliography=$BIB_FILE -o $MARKDOWN_FILE.odt; 
+      /Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $MARKDOWN_FILE.odt;
+      rm $MARKDOWN_FILE.odt
+    output: 
+      - $MARKDOWN_FILE.docx
+
+  manuscript:
+    help: convert to a Word file formatted as a manuscript through LibreOffice
+    dependencies:
+      - $MARKDOWN_FILE.md
+    formula: >
+      replace_includes $MARKDOWN_FILE.md | replace_pdfs | pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S --default-image-extension=png --template=$PREFIX/templates/odt-manuscript.template --reference-odt=$PREFIX/styles/reference-manuscript.odt --filter pandoc-citeproc --csl=$PREFIX/csl/$CSL.csl --bibliography=$BIB_FILE -o $MARKDOWN_FILE-manuscript.odt $MARKDOWN_FILE.md; 
+      /Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $MARKDOWN_FILE-manuscript.odt;
+      rm $MARKDOWN_FILE-manuscript.odt
+    output: 
+      - $MARKDOWN_FILE-manuscript.docx
+
+  html:
+    help: convert to HTML
+    dependencies:
+      - $MARKDOWN_FILE.md
+    formula: >
+      replace_includes $MARKDOWN_FILE.md | replace_pdfs | pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w html -S --default-image-extension=png --template=$PREFIX/templates/html.template --css=$PREFIX/styles/marked/kultiad-serif.css --filter pandoc-citeproc --csl=$PREFIX/csl/$CSL.csl --bibliography=$BIB_FILE -o $MARKDOWN_FILE.html
+    output: 
+      - $MARKDOWN_FILE.html
+
+  bibliography:
+    help: extract citations into a separate BibTeX file
+    dependencies:
+      - $MARKDOWN_FILE.md
+    formula: >
+      bib_extract --bibtex_file $BIB_FILE $MARKDOWN_FILE.md $MARKDOWN_FILE.bib
+    output:
+      - $MARKDOWN_FILE.bib

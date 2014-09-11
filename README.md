@@ -6,7 +6,5 @@ Pandoc allows you to create custom output templates for most file formats, but u
 
 	/Applications/LibreOffice.app/Contents/MacOS/soffice.bin --invisible --convert-to docx filename.odt
 
-If I understood Makefile syntax better, I'd add a set of rules to convert from `.odt` to `.docx`, but I don't have time to figure that out now.
-
-But HOLY GRAIL! Markdown to Word, HTML, and PDF with one command. Beautiful.
+HOLY GRAIL! Markdown to Word, HTML, and PDF with one command. Beautiful.
 
