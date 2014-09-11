@@ -50,7 +50,7 @@ generate output:
     dependencies:
       - $MARKDOWN_FILE.md
     formula: >
-      replace_includes $MARKDOWN_FILE.md | replace_pdfs | pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S --default-image-extension=png --template=$PREFIX/templates/odt-manuscript.template --reference-odt=$PREFIX/styles/reference-manuscript.odt --filter pandoc-citeproc --csl=$PREFIX/csl/$CSL.csl --bibliography=$BIB_FILE -o $MARKDOWN_FILE-manuscript.odt $MARKDOWN_FILE.md; 
+      replace_includes $MARKDOWN_FILE.md | replace_pdfs | pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S --default-image-extension=png --template=$PREFIX/templates/odt-manuscript.template --reference-odt=$PREFIX/styles/reference-manuscript.odt --filter pandoc-citeproc --csl=$PREFIX/csl/$CSL.csl --bibliography=$BIB_FILE -o $MARKDOWN_FILE-manuscript.odt; 
       /Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $MARKDOWN_FILE-manuscript.odt;
       rm $MARKDOWN_FILE-manuscript.odt
     output: 
