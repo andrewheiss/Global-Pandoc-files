@@ -8,3 +8,14 @@ Pandoc allows you to create custom output templates for most file formats, but u
 
 HOLY GRAIL! Markdown to Word, HTML, and PDF with one command. Beautiful.
 
+
+## To do
+
+* Space after lists in Word
+* Table styles in Word
+
+
+## Bugs
+
+* No captions at all in Word (because Pandoc > ODT doesn't support them)
+* No caption numbers in HTML
