@@ -13,6 +13,7 @@ HOLY GRAIL! Markdown to Word, HTML, and PDF with one command. Beautiful.
 
 * Space after lists in Word
 * Table styles in Word
+* Line wrapping in memo header
 
 
 ## Bugs
