@@ -55,6 +55,20 @@ $endif$
 \date{}
 
 
+$if(memo)$
+\newcommand{\memoheader}{
+  \begin{tabbing}
+  \hspace*{2cm} \= \kill
+  To:      \> $for(to)$$to$$sep$, $endfor$ \\
+  From:    \> $for(author)$$author.name$$if(author.email)$~(\url{$author.email$})$endif$$sep$, $endfor$ \\
+  Date:    \> $date$ \\
+  Subject: \> \textbf{$title$}
+  \end{tabbing}
+  \vspace*{0.2in}
+}
+$endif$
+
+
 % Add PDF metadata
 $if(blinded)$
 \hypersetup{pdfinfo={
@@ -87,6 +101,7 @@ $else$
 \chapterstyle{hikma-article} 
 $endif$
 
+
 $if(pagestyle)$
 \pagestyle{$pagestyle$}
 $else$
@@ -97,6 +112,10 @@ $if(vc)$
 \copypagestyle{plain}{athgit_first}  % Modified first page with git information
 $endif$
 
+% If this is a memo, use the fancy memo heading; otherwise, use the normal article title
+$if(memo)$
+\memoheader
+$else$
 $if(published)$
 \published{$date$. $published$}
 $else$
@@ -123,6 +142,7 @@ $if(abstract)$
 $else$
 \vskip 5em
 $endif$
+$endif$  % End of the if(memo) thing
 
 $body$
 

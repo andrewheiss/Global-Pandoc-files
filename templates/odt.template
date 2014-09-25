@@ -13,6 +13,14 @@ $for(header-includes)$
 $endfor$
 <office:body>
 <office:text>
+$if(memo)$
+<text:p text:style-name="Memo header">To:<text:tab/>$to$</text:p>
+<text:p text:style-name="Memo header">From:<text:tab/>$for(author)$$author.name$$if(author.email)$ ($author.email$)$endif$$sep$, $endfor$</text:p>
+<text:p text:style-name="Memo header">Date:<text:tab/>$date$</text:p>
+<text:p text:style-name="Memo header last">Subject:<text:tab/><text:span text:style-name="Bold">$title$</text:span></text:p>
+
+$else$
+
 $if(published)$
 <text:h text:style-name="Published message">$published$</text:h>
 $endif$
@@ -21,11 +29,15 @@ $if(title)$
 <text:h text:style-name="Title">$title$</text:h>
 $endif$
 
+$if(blinded)$
+ 
+$else$
 $for(author)$
 <text:p text:style-name="Author">$author.name$</text:p>
 <text:p text:style-name="Affiliation">$author.affiliation$</text:p>
 <text:p text:style-name="Email">$author.email$</text:p>
 $endfor$
+$endif$
 
 $if(date)$
 <text:p text:style-name="Date">$date$</text:p>
@@ -33,6 +45,8 @@ $endif$
 
 $if(abstract)$
 <text:p text:style-name="Abstract"><text:span text:style-name="Bold">Abstract:</text:span> $abstract$</text:p>
+$endif$
+
 $endif$
 
 $for(include-before)$
