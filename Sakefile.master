@@ -34,7 +34,7 @@ generate output:
     output: 
       - $MARKDOWN_FILE.pdf
 
-  word:
+  docx:
     help: convert to nice looking Word file through LibreOffice
     dependencies:
       - $MARKDOWN_FILE.md
