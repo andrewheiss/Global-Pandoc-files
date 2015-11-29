@@ -1,5 +1,14 @@
 %!TEX program = xelatex
 \documentclass[11pt,article,oneside]{memoir}
+
+% With MacTeX 2015, I get this fun error:
+% ! No room for a new \count .
+% \ch@ck ...\else \errmessage {No room for a new #3}
+% Adding these two lines fixes it, though in theory they shouldn't be necessary
+% http://tex.stackexchange.com/a/38609/11851
+\usepackage{etex}
+\reserveinserts{28}
+
 \usepackage{hikma-preamble-xelatex}
 $if(vc)$
 \input{vc}

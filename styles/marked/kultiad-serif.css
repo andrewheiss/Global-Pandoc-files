@@ -182,6 +182,10 @@ img {
     border: 0 none;
 }
 
+p img {
+    display: inline;
+}
+
 
 ol > li:before {
     color: #423F37;
@@ -273,28 +277,36 @@ caption{display:table-caption;font-weight:300;font-size:1.3em;text-transform:upp
     font-size: 0.8rem;
 }
 
-.author{
-  font-size:1.24em;
-  line-height:0.5em;
+.author {
+	font-size:1.24em;
+	line-height:0.5em;
 }
 
 .date {
     color: #C7C2B8;
     display: block;
-    font-size: 0.8rem;
+	font-size: 0.8rem;
 }
 
 .caption {
-   display: block;
-   font-size: 0.8rem;
-   font-style: italic;
+	display: block;
+	font-size: 0.8rem;
+	font-style: italic;
 }
 
-.small{
- font-size:0.8em;
+.small {
+	font-size:0.8em;
 }
 
-.affiliation{
- font-size:0.9em;
- font-style: italic;
+.affiliation {
+	font-size:0.9em;
+	font-style: italic;
 }
+
+sup, sub {
+   vertical-align: baseline;
+   position: relative;
+   top: -0.4em;
+}
+
+sub { top: 0.2em; }

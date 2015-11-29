@@ -60,7 +60,7 @@ $endif$
 
 $if(abstract)$
 
-<p class="small"><strong>Abstract: </strong><em>$abstract$</em></p>
+<div class="small"><em>$abstract$</em></div>
 
 $endif$
 

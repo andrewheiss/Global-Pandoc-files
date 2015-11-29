@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Symlink this somewhere executable (like /usr/local/bin or ~/bin or whatever)
-cp ~/.pandoc/Sakefile.master ./Sakefile
+# cp ~/.pandoc/Sakefile.master ./Sakefile
+cp ~/.pandoc/Makefile.master ./Makefile
