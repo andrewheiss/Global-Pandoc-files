@@ -29,6 +29,9 @@
 # Markdown extension (e.g. md, markdown, mdown).
 MEXT = md
 
+# Optional folder for manuscript
+MS_DIR = manuscript
+
 # Location of Pandoc support files.
 PREFIX = /Users/andrew/.pandoc
 
@@ -69,7 +72,7 @@ ERROR_COLOR = \x1b[31;01m
 # Target definitions
 # --------------------
 # All markdown files in the working directory
-SRC = $(wildcard *.$(MEXT))
+SRC = $(wildcard $(MS_DIR)/*.$(MEXT))
 BASE = $(basename $(SRC))
 
 # Targets
@@ -138,7 +141,7 @@ bib:	$(BIB)
 
 %.docx:	%.odt
 	@echo "$(WARN_COLOR)Converting .odt to .docx...$(NO_COLOR)"
-	/Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $<
+	/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to docx --outdir $(MS_DIR) $<
 	@echo "$(WARN_COLOR)Removing .odt file...$(NO_COLOR)"
 	rm $<
 	@echo "$(OK_COLOR)All done!$(NO_COLOR)"
@@ -155,13 +158,6 @@ bib:	$(BIB)
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
 	-o $@
-
-%-manuscript.docx:	%-manuscript.odt
-	@echo "$(WARN_COLOR)Converting .odt manuscript to .docx...$(NO_COLOR)"
-	/Applications/LibreOffice.app/Contents/MacOS/soffice --invisible --convert-to docx $<
-	@echo "$(WARN_COLOR)Removing .odt file...$(NO_COLOR)"
-	rm $<
-	@echo "$(OK_COLOR)All done!$(NO_COLOR)"
 
 %.bib: %.md
 	@echo "$(WARN_COLOR)Extracing all citations into a standalone .bib file...$(NO_COLOR)"
