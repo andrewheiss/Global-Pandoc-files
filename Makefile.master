@@ -30,7 +30,7 @@
 MEXT = md
 
 # Optional folder for manuscript
-MS_DIR = manuscript
+MS_DIR = .
 
 # Location of Pandoc support files.
 PREFIX = /Users/andrew/.pandoc
