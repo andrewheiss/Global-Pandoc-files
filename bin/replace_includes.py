@@ -24,39 +24,45 @@ from os import path
 
 # Get command line arguments
 parser = argparse.ArgumentParser(description='Replace !INCLUDE commands with external Markdown files.')
-parser.add_argument('input_file', type=argparse.FileType('r'), 
-                    nargs='?', default=sys.stdin, 
+parser.add_argument('input_file', type=argparse.FileType('r'),
+                    nargs='?', default=sys.stdin,
                     help='Markdown file to preprocess')
-parser.add_argument('output', type=argparse.FileType('w'), 
-                    nargs='?', default=sys.stdout, 
+parser.add_argument('output', type=argparse.FileType('w'),
+                    nargs='?', default=sys.stdout,
                     help='the name of the output file (defaults to stdout)')
 args = parser.parse_args()
 
 # Save arguments
-input_file = args.input_file.read()
+input_text = args.input_file.read()
+input_name = args.input_file.name
+directory_name = path.dirname(input_name)
 output = args.output
 
 
-#----------------------------------------------------
+# ---------------------------------------------------
 # Replace the matched object with its file contents
-#----------------------------------------------------
+# ---------------------------------------------------
 def include(match):
-  # The filename match should generally be group 2
-  if match.group(1) is None:
-    filename = match.group(2)
-  else:
-    filename = match.group(1)
+    # print(match)
+    # The filename match should generally be group 2
+    if match.group(1) is None:
+        filename = match.group(2)
+    else:
+        filename = match.group(1)
 
-  # Open the file
-  if path.isfile(filename):
-    with open(filename, 'r') as f:
-      data = f.read()
-    return(data)
+    if directory_name:
+        filename = path.join(directory_name, filename)
 
-  # If there's not an actual file there, return the !INCLUDE string
-  return(match.group(0))
+    # Open the file
+    if path.isfile(filename):
+        with open(filename, 'r') as f:
+            data = f.read()
+        return(data)
+
+    # If there's not an actual file there, return the !INCLUDE string
+    return(match.group(0))
 
 # Match all instances of !INCLUDE "asdf" and replace with file contents
-result = re.sub("!INCLUDE\s+(?:\"([^\"]+)\"|'([^']+)')", include, input_file)
+result = re.sub("!INCLUDE\s+(?:\"([^\"]+)\"|'([^']+)')", include, input_text)
 with output as f:
-  f.write(result)
+    f.write(result)
