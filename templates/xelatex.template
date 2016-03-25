@@ -58,6 +58,9 @@ $endif$
 
 $if(vc)$
 \input{vc}
+$if(git-repo)$
+\gdef\GITURL{$git-repo$}
+$endif$
 $endif$
 
 $if(listings)$
