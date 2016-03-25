@@ -7,7 +7,9 @@
     <style:style style:name="Italic" style:family="text"><style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic" /></style:style>
     <style:style style:name="Bold" style:family="text"><style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold" /></style:style>
   </office:styles>
-  $automatic-styles$
+  <office:automatic-styles>
+    $automatic-styles$
+  </office:automatic-styles>
 $for(header-includes)$
   $header-includes$
 $endfor$
