@@ -64,6 +64,12 @@ $if(abstract)$
 
 $endif$
 
+$if(keywords)$
+<br>
+<div class="small"><em>Keywords:</em> $keywords$</div>
+
+$endif$
+
 
 $body$
 </body>

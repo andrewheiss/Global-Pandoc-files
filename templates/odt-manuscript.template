@@ -38,6 +38,10 @@ $if(abstract)$
 <text:p text:style-name="Abstract"><text:span text:style-name="Bold">Abstract:</text:span> $abstract$</text:p>
 $endif$
 
+$if(keywords)$
+<text:p text:style-name="Abstract"><text:span text:style-name="Italic">Keywords:</text:span> $keywords$</text:p>
+$endif$
+
 <text:p text:style-name="Faux page break"> </text:p>
 
 $for(include-before)$
