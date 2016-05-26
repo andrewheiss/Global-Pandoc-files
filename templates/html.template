@@ -17,6 +17,26 @@ $endif$
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
+$if(epigraph)$
+  <style type="text/css">
+      .epigraph-wrapper {
+        overflow: hidden;
+      }
+      .epigraph {
+        width: 65%;
+        float: right;
+        font-size: 0.9em;
+      }
+
+      .epigraph-text {
+        padding-top: 0.8em;
+      }
+
+      .epigraph-source {
+        text-align: right;
+      }
+  </style>
+$endif$
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
@@ -64,9 +84,28 @@ $if(abstract)$
 
 $endif$
 
+$if(epigraph)$
+  <div class="epigraph-wrapper">
+  <div class="epigraph">
+  $for(epigraph)$
+    $if(epigraph.source)$
+    <!-- <div class="epigraph"> -->
+        <p class="epigraph-text">$epigraph.text$</p>
+        <p class="epigraph-source">&mdash;$epigraph.source$</p>
+    <!-- </div> -->
+    $else$
+    <!-- <div class="epigraph"> -->
+        <p class="epigraph-text">$epigraph.text$</p>
+    <!-- </div> -->
+    $endif$
+  $endfor$
+  </div>
+  </div>
+$endif$
+
 $if(keywords)$
-<br>
-<div class="small"><em>Keywords:</em> $keywords$</div>
+<!-- <br>
+<div class="small"><em>Keywords:</em> $keywords$</div> -->
 
 $endif$
 

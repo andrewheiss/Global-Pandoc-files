@@ -49,6 +49,17 @@ $if(abstract)$
 <text:p text:style-name="Abstract"><text:span text:style-name="Bold">Abstract:</text:span> $abstract$</text:p>
 $endif$
 
+$if(epigraph)$
+  $for(epigraph)$
+    $if(epigraph.source)$
+    <text:p text:style-name="Epigraph">$epigraph.text$</text:p>
+    <text:p text:style-name="Epigraph source">—$epigraph.source$</text:p>
+    $else$
+    <text:p text:style-name="Epigraph">$epigraph.text$</text:p>
+    $endif$
+  $endfor$
+$endif$
+
 $endif$
 
 $for(include-before)$

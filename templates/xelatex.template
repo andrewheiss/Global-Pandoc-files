@@ -202,6 +202,17 @@ $else$
 $endif$
 $endif$
 
+$if(epigraph)$
+  $for(epigraph)$
+    $if(epigraph.source)$
+    \epigraph{$epigraph.text$}{---$epigraph.source$}
+    $else$
+    \epigraph{$epigraph.text$}
+    $endif$
+  $endfor$
+$endif$
+
+
 $body$
 
 $if(biblatex)$

@@ -44,6 +44,19 @@ $endif$
 
 <text:p text:style-name="Faux page break"> </text:p>
 
+$if(epigraph)$
+  $for(epigraph)$
+    $if(epigraph.source)$
+    <text:p text:style-name="Epigraph">$epigraph.text$</text:p>
+    <text:p text:style-name="Epigraph">—$epigraph.source$</text:p>
+    <text:p text:style-name="Epigraph"></text:p>
+    $else$
+    <text:p text:style-name="Epigraph">$epigraph.text$</text:p>
+    <text:p text:style-name="Epigraph"></text:p>
+    $endif$
+  $endfor$
+$endif$
+
 $for(include-before)$
 $include-before$
 $endfor$
