@@ -92,9 +92,18 @@ $if(graphics)$
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
-
+$if(blinded)$
 $if(title)$
 \title{\bigskip \bigskip $title$}
+$endif$
+$else$
+$if(title)$
+\title{\bigskip \bigskip $title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$endif$
+
+$if(title)$
+\title{\bigskip \bigskip $title$ $if(thanks)$\thanks{$thanks$}$endif$}
 $endif$ 
 
 $if(blinded)$
@@ -111,7 +120,6 @@ $else$
 $endif$
 
 \date{}
-
 
 $if(memo)$
 \newcommand{\memoheader}{
@@ -148,7 +156,7 @@ $endif$
 
 
 \begin{document}
-\setkeys{Gin}{width=1\textwidth} 	
+\setkeys{Gin}{width=1\textwidth}    
 \setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
 \setsansfont[Mapping=tex-text]{Source Sans Pro} 
 \setmonofont[Mapping=tex-text,Scale=0.8]{Consolas}

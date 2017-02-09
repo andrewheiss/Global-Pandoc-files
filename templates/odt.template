@@ -27,9 +27,16 @@ $if(published)$
 <text:h text:style-name="Published message">$published$</text:h>
 $endif$
 
+$if(blinded)$
 $if(title)$
 <text:h text:style-name="Title">$title$</text:h>
 $endif$
+$else$
+$if(title)$
+<text:h text:style-name="Title">$title$$if(thanks)$<text:note text:note-class="footnote"><text:note-citation text:label="*">*</text:note-citation><text:note-body><text:p text:style-name="P1">$thanks$</text:p></text:note-body></text:note>$endif$</text:h>
+$endif$
+$endif$
+
 
 $if(blinded)$
  

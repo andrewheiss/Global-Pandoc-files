@@ -17,6 +17,14 @@ $endif$
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
+$if(thanks)$
+  <style type="text/css">
+      .acknowledgments {
+        margin: 2em;
+        color: #bfbfbf;
+      }
+  </style>
+$endif$
 $if(epigraph)$
   <style type="text/css">
       .epigraph-wrapper {
@@ -79,9 +87,15 @@ $toc$
 $endif$
 
 $if(abstract)$
-
 <div class="small"><em>$abstract$</em></div>
+$endif$
 
+$if(blinded)$
+
+$else$
+$if(thanks)$
+<div class="small acknowledgments"><em>Acknowledgments:</em> <em>$thanks$</em></div>
+$endif$
 $endif$
 
 $if(epigraph)$
@@ -108,7 +122,6 @@ $if(keywords)$
 <div class="small"><em>Keywords:</em> $keywords$</div> -->
 
 $endif$
-
 
 $body$
 </body>
