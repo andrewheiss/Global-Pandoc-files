@@ -20,3 +20,8 @@ HOLY GRAIL! Markdown to Word, HTML, and PDF with one command. Beautiful.
 
 * No captions at all in Word (because Pandoc > ODT doesn't support them)
 * No caption numbers in HTML
+
+
+## Binary things
+
+Download the [latest compiled `pandoc-crossref` binary](https://github.com/lierdakil/pandoc-crossref/releases) and put it in `./bin`.
