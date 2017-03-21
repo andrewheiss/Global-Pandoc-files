@@ -102,10 +102,6 @@ $if(title)$
 $endif$
 $endif$
 
-$if(title)$
-\title{\bigskip \bigskip $title$ $if(thanks)$\thanks{$thanks$}$endif$}
-$endif$ 
-
 $if(blinded)$
 \author{~}
 $else$
