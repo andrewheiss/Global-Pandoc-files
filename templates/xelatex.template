@@ -163,6 +163,11 @@ $endif$
 %\setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{Consolas}
 \setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{InconsolataGo}
 
+% Deal with verbatim font sizes, since this handles leading better than setting
+% a Scale factor in \setmonofont
+\fvset{fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+
 $if(chapterstyle)$
 \chapterstyle{$chapterstyle$}
 $else$
