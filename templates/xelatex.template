@@ -157,9 +157,11 @@ $endif$
 
 \begin{document}
 \setkeys{Gin}{width=1\textwidth}    
-\setromanfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
+% \setmainfont[Mapping=tex-text,Numbers=OldStyle]{Minion Pro} 
+\setmainfont[Mapping=tex-text,Numbers={Monospaced,OldStyle},Ligatures=Rare]{Crimson} 
 \setsansfont[Mapping=tex-text]{Source Sans Pro} 
-\setmonofont[Mapping=tex-text,Scale=0.8]{Consolas}
+%\setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{Consolas}
+\setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{InconsolataGo}
 
 $if(chapterstyle)$
 \chapterstyle{$chapterstyle$}
