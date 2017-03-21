@@ -17,6 +17,9 @@ $if(bibstyle-chicago-notes)$
 \usepackage[notes, backend=biber,
             autolang=hyphen, bibencoding=inputenc,
             strict, isbn=false, uniquename=false]{biblatex-chicago} % biblatex setup
+% No space between bib entries + use smaller font
+\setlength\bibitemsep{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
 
 %% Fix biblatex's odd preference for using In: by default.
 \renewbibmacro{in:}{%
@@ -32,6 +35,9 @@ $if(bibstyle-chicago-authordate)$
 \usepackage[authordate, backend=biber,
             autolang=hyphen, bibencoding=inputenc,
             strict, isbn=false, uniquename=false]{biblatex-chicago} % biblatex setup
+% No space between bib entries + use smaller font
+\setlength\bibitemsep{0pt}
+\renewcommand*{\bibfont}{\footnotesize}
 
 %% Fix biblatex's odd preference for using In: by default.
 \renewbibmacro{in:}{%
