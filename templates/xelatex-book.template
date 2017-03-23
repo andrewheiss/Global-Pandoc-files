@@ -89,25 +89,26 @@ $if(graphics)$
 $endif$
 
 
-% \newlength\drop
 \makeatletter
 \newcommand*\fancytitle{\begingroup
-% \setlength\drop{0.08\textheight}
 \centering
-% \vspace*{\drop}
-{\huge\sffamily\bfseries $title$}
+% Leading issues: http://tex.stackexchange.com/a/48743/11851
+{\Huge\sffamily\bfseries{$title$}\par}
+\vspace{1em}
+{\LARGE\sffamily{$subtitle$}\par}
 \vfill
 {$for(author)$
-    \sffamily\Large $author.name$ \par
-    \normalsize\emph{$author.affiliation$} \par
-    \footnotesize \url{$author.email$}\par 
+    {\sffamily\Large{$author.name$}\par}
+    \vspace{0.5em}
+    {\normalsize\emph{$author.affiliation$}\par}
+    \vspace{0.5em}
+    {\footnotesize{\url{$author.email$}}\par}
     $sep$ \and 
 $endfor$}\par
 \vfill
-{\sffamily\footnotesize $published$}\par
+{\sffamily\footnotesize{$published$}\par}
 \vfill
-{\sffamily\footnotesize \@date}\par
-% \vspace*{2\drop}
+{\sffamily\footnotesize{\@date}\par}
 \endgroup}
 \makeatother
 
@@ -123,7 +124,7 @@ $if(blinded)$
 }}
 $else$
 \hypersetup{pdfinfo={
-  Title={$title$},
+  Title={$title$:$subtitle$},
   Author={$for(author)$$author.name$$sep$, $endfor$},
   Creator={Markdown, pandoc, and TeX}
   % Subject={},
@@ -133,6 +134,8 @@ $endif$
 
 
 \begin{document}
+\pagenumbering{roman}
+
 \setkeys{Gin}{width=1\textwidth}    
 \setmainfont[Mapping=tex-text,Numbers={Proportional,OldStyle}]{Minion Pro} 
 % \setmainfont[Mapping=tex-text,Numbers={Monospaced,OldStyle},Ligatures=Rare]{Crimson} 
@@ -144,7 +147,6 @@ $endif$
 % a Scale factor in \setmonofont
 \fvset{fontsize=\footnotesize}
 \RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
-
 
 $if(chapterstyle)$
 \chapterstyle{$chapterstyle$}
@@ -203,7 +205,8 @@ $if(epigraph)$
   $endfor$
 $endif$
 
-
+\clearpage
+\pagenumbering{arabic}
 $body$
 
 $if(biblatex)$
