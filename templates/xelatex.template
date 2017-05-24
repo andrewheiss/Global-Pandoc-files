@@ -146,6 +146,10 @@ $else$
 }}
 $endif$
 
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{arabic}
+\newfontfamily\arabicfont[Script = Arabic]{Al Tarikh}
 
 \begin{document}
 \setkeys{Gin}{width=1\textwidth}    
