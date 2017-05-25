@@ -132,6 +132,10 @@ $else$
 }}
 $endif$
 
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{arabic}
+\newfontfamily\arabicfont[Script = Arabic]{Al Tarikh}
 
 \begin{document}
 \pagenumbering{roman}
