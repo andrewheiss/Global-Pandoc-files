@@ -137,6 +137,13 @@ $endif$
 \setotherlanguage{arabic}
 \newfontfamily\arabicfont[Script = Arabic]{Al Tarikh}
 
+% \usepackage{tocloft}
+% \cftpagenumbersoff{part}
+% \cftpagenumbersoff{chapter}
+% \cftpagenumbersoff{section}
+% \cftpagenumbersoff{subsection}
+% \cftpagenumbersoff{subsubsection}
+
 \begin{document}
 \pagenumbering{roman}
 
