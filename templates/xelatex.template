@@ -3,6 +3,18 @@
 
 \usepackage{hikma-preamble-xelatex}
 
+% This stuff has to come before polyglossia and bidi
+\usepackage{fancyvrb}
+$if(tables)$
+\usepackage{longtable}
+$endif$
+
+% This has to come before loading biblatex
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{arabic}
+\newfontfamily\arabicfont[Script = Arabic]{Amiri}
+
 % Bibliography stuff
 $if(biblatex)$
 $if(bibstyle-chicago-notes)$
@@ -70,10 +82,6 @@ $endif$
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
-$if(tables)$
-\usepackage{longtable}
-$endif$
-\usepackage{fancyvrb}
 
 $if(graphics)$
 \usepackage{graphicx}
@@ -146,10 +154,6 @@ $else$
 }}
 $endif$
 
-\usepackage{polyglossia}
-\setdefaultlanguage{english}
-\setotherlanguage{arabic}
-\newfontfamily\arabicfont[Script = Arabic]{Al Tarikh}
 
 \begin{document}
 \setkeys{Gin}{width=1\textwidth}    
