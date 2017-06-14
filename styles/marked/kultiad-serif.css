@@ -310,3 +310,10 @@ sup, sub {
 }
 
 sub { top: 0.2em; }
+
+/* Other tweaks by Andrew Heiss */
+/* Hanging indent in bibliography */
+.references p {
+    padding-left: 2rem;
+    text-indent: -2rem;
+}
