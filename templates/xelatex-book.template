@@ -88,6 +88,11 @@ $if(graphics)$
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 $endif$
 
+% memoir does its own subfloats with \subtop and \subbottom. Instead of
+% fighting with pandoc-crossref, which outputs \subfloat, just redefine
+% \subfloat as \subbottom
+\newsubfloat{figure}  % Allow subfloats in figure environment
+\let\subfloat\subbottom
 
 \makeatletter
 \newcommand*\fancytitle{\begingroup
