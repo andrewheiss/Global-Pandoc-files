@@ -128,9 +128,9 @@ $if(blinded)$
 $else$
 \author{
   $for(author)$
-    \Large $author.name$\vspace{0.05in} \newline
-    \normalsize\emph{$author.affiliation$} \newline
-    \footnotesize \url{$author.email$}\vspace*{0.2in}\newline 
+    \Large $author.name$ \newline
+    \footnotesize $author.affiliation$ \newline
+    \footnotesize \url{$author.email$}\vspace*{1.1em}\newline 
     $sep$ \and 
   $endfor$
 }
