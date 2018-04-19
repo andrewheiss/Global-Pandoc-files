@@ -171,16 +171,32 @@ $else$
 }}
 $endif$
 
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+
+$if(mainfont)$
+    \setmainfont[Numbers={Proportional,OldStyle}]{$mainfont$}
+$else$
+    \setmainfont[Numbers={Proportional,OldStyle}]{Linux Libertine O}
+$endif$
+$if(sansfont)$
+    \setsansfont{$sansfont$}
+$else$
+    \setsansfont{Source Sans Pro}
+$endif$
+$if(monofont)$
+    \setmonofont[Mapping=tex-ansi]{$monofont$}
+$else$
+    \setmonofont[Mapping=tex-ansi]{InconsolataGo}
+$endif$
+$if(mathfont)$
+    \setmathfont{$mathfont$}
+$else$
+    \setmathfont{Libertinus Math}
+$endif$
+
 
 \begin{document}
-\setkeys{Gin}{width=1\textwidth}    
-\setmainfont[Mapping=tex-text,Numbers={Proportional,OldStyle}]{Minion Pro} 
-\setmathfont{Libertinus Math}
-% \setmainfont[Mapping=tex-text,Numbers={Monospaced,OldStyle},Ligatures=Rare]{Crimson} 
-\setsansfont[Mapping=tex-text]{Source Sans Pro} 
-%\setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{Consolas}
-\setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{InconsolataGo}
-
+\setkeys{Gin}{width=1\textwidth}
 % Deal with verbatim font sizes, since this handles leading better than setting
 % a Scale factor in \setmonofont
 \fvset{fontsize=\footnotesize}
