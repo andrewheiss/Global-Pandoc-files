@@ -36,7 +36,7 @@ $if(bibstyle-chicago-notes)$
 \renewcommand{\bibnamedash}{\rule[3.5pt]{3em}{0.5pt}}
 $endif$
 $if(bibstyle-chicago-authordate)$
-\usepackage[authordate, backend=biber,
+\usepackage[authordate, backend=biber, noibid,
             autolang=hyphen, bibencoding=inputenc,
             strict, isbn=false, uniquename=false]{biblatex-chicago} % biblatex setup
 % No space between bib entries + use smaller font
