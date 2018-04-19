@@ -3,6 +3,9 @@
 
 \usepackage{hikma-preamble-xelatex}
 
+% For custom math fonts
+\usepackage{unicode-math}
+
 % This stuff has to come before polyglossia and bidi
 \usepackage{fancyvrb}
 $if(tables)$
@@ -164,6 +167,7 @@ $endif$
 \begin{document}
 \setkeys{Gin}{width=1\textwidth}    
 \setmainfont[Mapping=tex-text,Numbers={Proportional,OldStyle}]{Minion Pro} 
+\setmathfont{Libertinus Math}
 % \setmainfont[Mapping=tex-text,Numbers={Monospaced,OldStyle},Ligatures=Rare]{Crimson} 
 \setsansfont[Mapping=tex-text]{Source Sans Pro} 
 %\setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{Consolas}
