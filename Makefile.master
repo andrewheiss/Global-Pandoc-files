@@ -51,12 +51,13 @@ BIB_FILE = /Users/andrew/Dropbox/Readings/Papers.bib
 # CSL stylesheet (located in the csl folder of the PREFIX directory).
 # Common CSLs:
 #	* american-political-science-association
+#   * chicago-author-date
 #   * chicago-fullnote-bibliography
 #	* chicago-fullnote-no-bib
 #   * chicago-syllabus-no-bib
 #   * apa
 #   * apsa-no-bib
-CSL = american-political-science-association
+CSL = chicago-author-date
 
 # LaTeX doesn't use pandoc-citeproc + CSL and instead lets biblatex handle the
 # heavy lifting. There are three possible styles built in to the template:
@@ -123,9 +124,10 @@ bib:	$(BIB)
 %.html:	%.md
 	@echo "$(WARN_COLOR)Converting Markdown to HTML using standard template...$(NO_COLOR)"
 	replace_includes $< | replace_pdfs $(PNG_CONVERT) | \
-	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w html -S \
+	pandoc -r markdown+autolink_bare_uris+ascii_identifiers+smart -s -w html \
 		$(CROSSREF) \
 		--default-image-extension=png \
+		--mathjax \
 		--template=$(PREFIX)/templates/html.template \
 		--css=$(PREFIX)/styles/marked/kultiad-serif.css \
 		--filter pandoc-citeproc \
@@ -137,34 +139,34 @@ bib:	$(BIB)
 %.pdf:	%.md
 	@echo "$(WARN_COLOR)Converting Markdown to PDF using hikma-article template...$(NO_COLOR)"
 	replace_includes $< | replace_reference_title | \
-	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w latex -s -S \
+	pandoc -r markdown+smart -w latex -s \
 		$(CROSSREF) \
 		--default-image-extension=pdf \
-		--latex-engine=xelatex \
+		--pdf-engine=xelatex \
 		--template=$(PREFIX)/templates/xelatex.template \
 		--filter pandoc-citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
 		-V chapterstyle=hikma-article \
 		-V pagestyle=ath \
-		--base-header-level=2 \
+		--base-header-level=1 \
 	-o $@
 	@echo "$(OK_COLOR)All done!$(NO_COLOR)"
 
 %.tex:	%.md
 	@echo "$(WARN_COLOR)Converting Markdown to TeX using hikma-article template...$(NO_COLOR)"
 	replace_includes $< | \
-	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w latex -s -S \
+	pandoc -r markdown+smart+raw_tex -w latex -s \
 		$(CROSSREF) \
 		--default-image-extension=pdf \
-		--latex-engine=xelatex \
+		--pdf-engine=xelatex \
 		--template=$(PREFIX)/templates/xelatex.template \
 		--biblatex \
 		-V $(TEX_REF) \
 		--bibliography=$(BIB_FILE) \
 		-V chapterstyle=hikma-article \
 		-V pagestyle=ath \
-		--base-header-level=2 \
+		--base-header-level=1 \
 	-o $@
 	@echo "$(WARN_COLOR)...converting TeX to PDF with latexmk (prepare for lots of output)...$(NO_COLOR)"
 	latexmk -outdir=$(MS_DIR_FOR_TEX)$(TEX_DIR) -xelatex -quiet $@
@@ -173,11 +175,11 @@ bib:	$(BIB)
 %.odt:	%.md
 	@echo "$(WARN_COLOR)Converting Markdown to .odt using standard template...$(NO_COLOR)"
 	replace_includes $< | replace_pdfs $(PNG_CONVERT) | \
-	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S \
+	pandoc -r markdown+smart -w odt \
 		$(CROSSREF) \
 		--default-image-extension=png \
 		--template=$(PREFIX)/templates/odt.template \
-		--reference-odt=$(PREFIX)/styles/reference.odt \
+		--reference-doc=$(PREFIX)/styles/reference.odt \
 		--filter pandoc-citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
@@ -194,11 +196,11 @@ bib:	$(BIB)
 %-manuscript.odt: %.md
 	@echo "$(WARN_COLOR)Converting Markdown to .odt using manuscript template...$(NO_COLOR)"
 	replace_includes $< | replace_pdfs $(PNG_CONVERT) | move_figs_tables_to_end | \
-	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block -w odt -S \
+	pandoc -r markdown+smart -w odt \
 		$(CROSSREF) \
 		--default-image-extension=png \
 		--template=$(PREFIX)/templates/odt-manuscript.template \
-		--reference-odt=$(PREFIX)/styles/reference-manuscript.odt \
+		--reference-doc=$(PREFIX)/styles/reference-manuscript.odt \
 		--filter pandoc-citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
