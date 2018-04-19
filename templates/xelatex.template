@@ -1,5 +1,6 @@
 %!TEX program = xelatex
-\documentclass[11pt,article,oneside]{memoir}
+% \documentclass[11pt,article,oneside]{memoir}
+\documentclass[$if(fontsize)$$fontsize$,$else$11pt,$endif$article,oneside]{memoir}
 
 \usepackage{hikma-preamble-xelatex}
 
