@@ -10,6 +10,13 @@
 \usepackage{fancyvrb}
 $if(tables)$
 \usepackage{longtable}
+
+% Remove left margin in lists inside longtables
+% https://tex.stackexchange.com/a/378190/11851
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable} {\setlist[itemize]{nosep, wide=0pt, leftmargin=*, before=\vspace*{-\baselineskip}, after=\vspace*{-\baselineskip}}}
+
 $endif$
 
 % This has to come before loading biblatex
