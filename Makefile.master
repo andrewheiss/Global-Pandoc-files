@@ -4,20 +4,20 @@
 # file.
 #
 # Additional notes:
-# *	Change the paths at the top of the file as needed.
+# * Change the paths at the top of the file as needed.
 #
-# *	Using `make` without arguments will generate html, tex, pdf, docx,
-# 	and odt output files from all of the files with the designated
-#	markdown extension. The default is `.md` but you can change this.
+# * Using `make` without arguments will generate html, tex, pdf, docx,
+#   and odt output files from all of the files with the designated
+#   markdown extension. The default is `.md` but you can change this.
 #
-# *	You can specify an output format with `make tex`, `make pdf`,
-#  	`make html`, `make odt`, or `make docx`
+# * You can specify an output format with `make tex`, `make pdf`,
+#   `make html`, `make odt`, or `make docx`
 #
-# *	Running `make clean` will only remove all, .html, .pdf, .odt,
-#	and .docx files in your working directory **that have the same name
-#	as your Markdown files**. Other files with these extensions will be safe.
+# * Running `make clean` will only remove all, .html, .pdf, .odt,
+#   and .docx files in your working directory **that have the same name
+#   as your Markdown files**. Other files with these extensions will be safe.
 #
-# *	If wanted, remove the automatic call to `clean` to rely on make's
+# * If wanted, remove the automatic call to `clean` to rely on make's
 #   timestamp checking. However, if you do this, you'll need to add all the
 #   document's images, etc. as dependencies, which means it might be easier
 #   to just clean and delete everything every time you rebuild.
@@ -50,10 +50,10 @@ BIB_FILE = /Users/andrew/Dropbox/Readings/Papers.bib
 
 # CSL stylesheet (located in the csl folder of the PREFIX directory).
 # Common CSLs:
-#	* american-political-science-association
+#   * american-political-science-association
 #   * chicago-author-date
 #   * chicago-fullnote-bibliography
-#	* chicago-fullnote-no-bib
+#   * chicago-fullnote-no-bib
 #   * chicago-syllabus-no-bib
 #   * apa
 #   * apsa-no-bib
@@ -81,7 +81,7 @@ CROSSREF = --filter pandoc-crossref -M figPrefix:"Figure" -M eqnPrefix:"Equation
 # Color definitions
 #--------------------
 NO_COLOR    = \x1b[0m
-BOLD_COLOR	= \x1b[37;01m
+BOLD_COLOR  = \x1b[37;01m
 OK_COLOR    = \x1b[32;01m
 WARN_COLOR  = \x1b[33;01m
 ERROR_COLOR = \x1b[31;01m
