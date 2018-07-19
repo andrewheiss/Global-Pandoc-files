@@ -8,6 +8,12 @@
 \usepackage{unicode-math}
 
 % This stuff has to come before polyglossia and bidi
+
+% Wrap definition list terms
+% https://tex.stackexchange.com/a/9763/11851
+\usepackage{enumitem}
+\setlist[description]{style=unboxed}
+
 \usepackage{fancyvrb}
 $if(tables)$
 \usepackage{longtable}
