@@ -3,3 +3,4 @@ csl
 tests/.shastore
 filters/*
 bin/pandoc-crossref
+*.css.map

@@ -1,0 +1,552 @@
+/*
+Title: ATH Clean
+Author: Andrew Heiss @andrewheiss <www.andrewheiss.com>
+Description: Nice clean theme for Pandoc, based in part on "Pesto"
+    (https://github.com/ttscoff/MarkedCustomStyles/blob/master/Pesto.scss) by
+    Andrew Patton (@acusti <http://www.acusti.ca>)
+Non-standard fonts used: Work Sans, Gentium Basic
+---
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic');
+
+// Typography
+$sans-fonts  : "Work Sans", "Roboto Condensed", sans-serif;
+$serif-fonts : "Gentium Basic", "Palatino", serif;
+$mono-fonts  : "Consolas", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+
+$main-text-size: 1.3em;
+$main-text-leading : 1.5;
+
+$title-size: 3.3em;
+$title-weight: 300;
+$subtitle-size: 1.9em;
+$abstract-size: 1em;
+
+$h1-size: 2.8em;
+$h1-leading: 1.2;
+$h1-weight: 300;
+$h1-space-before: 1.75em;
+$h1-space-after: 0.333em;
+
+$h2-size: 1.9em;
+$h2-weight: $h1-weight;
+$h2-leading: $h1-leading;
+$h2-space-before: 1.5em;
+$h2-space-after: $h1-space-after;
+
+$h3-size: 1.5em;
+$h3-weight: $h1-weight;
+$h3-leading: $h1-leading;
+$h3-space-before: 1.3em;
+$h3-space-after: 0;
+
+$table-size: 1em;
+$table-leading: 1.4;
+
+
+// Colors
+// https://color.adobe.com/Cosmic-Grey-color-theme-10448864/
+// https://color.adobe.com/Color-Theme-1-color-theme-10944049/
+$color-accent     : rgb(199, 64, 45);
+$color-text-body  : hsl(0%, 0%, 4%);
+$color-text-light : hsl(0%, 0%, 95%);
+$color-text-lightest : hsl(0%, 0%, 98%);
+$color-accent-light: lighten($color-accent, 30%);
+$color-accent-lightest: lighten($color-accent, 45%);
+
+
+// Breakpoints and structure
+$min-width    : 320px;
+$max-width    : 1050px;
+$small-width  : $min-width + ($max-width - $min-width) * 0.2;
+$medium-width : $min-width + ($max-width - $min-width) * 0.4;
+$large-width  : $medium-width + ($max-width - $medium-width) * 0.6;
+$full-width   : $large-width + ($max-width - $large-width) * 0.8;
+
+$body-padding-horizontal : (
+    "base"        : 1rem,
+    $small-width  : 1.75rem,
+    $medium-width : 3rem,
+    $large-width  : 4rem,
+    $full-width   : 5rem
+);
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, button, input, select, textarea {
+    font-family: sans-serif;
+}
+
+html, body, button, input, select, textarea {
+    color: $color-text-body;
+    font-family: $serif-fonts;
+}
+
+body {
+    margin: 0 auto;
+    background-color: white;
+}
+
+body, textarea {
+    line-height: $main-text-leading;
+}
+
+body:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+body {
+    padding: map-get($body-padding-horizontal, "base") 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $max-width;
+    display: block;
+
+    @each $width, $padding in $body-padding-horizontal {
+        @media (min-width: #{$width}) {
+            padding-left  : $padding;
+            padding-right : $padding;
+        }
+    }
+}
+
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: $sans-fonts;
+}
+
+h1 {
+    font-size: $h1-size;
+    font-weight: $h1-weight;
+    line-height: $h1-leading;
+    margin: $h1-space-before 0 $h1-space-after;
+}
+
+h1 + h2 {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: $h2-size;
+    font-weight: $h2-weight;
+    line-height: $h2-leading;
+    margin: $h2-space-before 0 $h2-space-after;
+}
+
+h2 + h3 {
+    margin-top: 0;
+}
+
+h3 {
+    font-size: $h3-size;
+    font-weight: $h3-weight;
+    line-height: $h3-leading;
+    margin: $h3-space-before 0 $h3-space-after;
+}
+
+h4 {
+    font-size: 1.2em;
+    font-weight: $h3-weight;
+    margin: 1.3em 0 0;
+}
+
+h5 {
+    font-size: 1em;
+    font-weight: $h3-weight;
+    margin: 1.3em 0 0;
+}
+
+h6 {
+    font-size: 0.8em;
+    font-weight: $h3-weight;
+    margin: 1.3em 0 0;
+}
+
+
+/* Links */
+a {
+    color: $color-accent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $color-accent-light;
+}
+
+
+/* Monospaced stuff */
+code, pre, kbd, samp, tt {
+	font-family: $mono-fonts;
+	background-color: $color-text-light;
+	font-size: 80%;
+	padding: 0;
+}
+
+pre {
+    font-size: $main-text-size;
+    margin: 1em 0;
+    line-height: 1.1;
+    background-color: $color-text-light;
+    overflow-x: auto;
+    padding: 1.3rem;
+    position: relative;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+code, tt {
+    margin: 0 2px;
+    padding: 0 7px;
+    white-space: nowrap;
+    border: 1px solid lighten($color-text-body, 85%);
+    background-color: $color-text-light;
+    color: $color-text-body;
+}
+
+pre > code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+}
+
+
+/* General typography */
+p {
+    font-size: $main-text-size;
+    margin: 1em 0;
+}
+
+b, strong {
+    font-weight: bold;
+    font-weight: 700;
+}
+
+blockquote {
+    margin: 2em 4em;
+}
+
+small {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+.footnote-ref, sup {
+    font-size: 0.9rem;
+    vertical-align: super;
+}
+
+.footnotes {
+    font-size: 80%;
+}
+
+.footnote-back {
+    padding-left: 0.5em;
+}
+
+sub {
+    font-size: 0.9rem;
+    vertical-align: sub;
+}
+
+hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color -moz-use-text-color $color-text-body;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    margin: 3em 6em;
+}
+
+
+/* Extra document parts */
+.article-meta {
+    font-family: $sans-fonts; 
+    font-weight: $title-weight;
+}
+
+.title {
+    font-size: $title-size; 
+}
+
+.subtitle {
+    font-size: $subtitle-size;
+    margin-top: 0;
+}
+
+.date {
+    font-size: 1em;   
+}
+
+.published {
+    font-size: 1em;   
+}
+
+.authors {
+    margin: 2em 0;
+}
+
+.author {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.affilation {
+    font-size: 1em;
+    margin-top: 0;
+}
+
+.abstract {
+    font-family: $sans-fonts; 
+    font-weight: $title-weight;
+    font-size: $abstract-size;
+    margin: 0 3em 0;
+    padding: 5px;
+}
+
+.acknowledgments {
+    font-family: $sans-fonts; 
+    font-weight: $title-weight;
+    font-size: $abstract-size;
+    margin: 2em 3em;
+    padding: 5px;
+    background: $color-text-light;
+}
+
+.epigraph-wrapper {
+    overflow: hidden;
+}
+
+.epigraph {
+    width: 65%;
+    float: right;
+    color: lighten($color-text-body, 50%);
+}
+
+.epigraph-text {
+    padding-top: 0.8em;
+    font-style: italic;
+    font-size: 1.6em;
+}
+
+.epigraph-source {
+    text-align: right;
+    font-size: 1.2em;
+}
+
+.references p {
+    padding-left: 3rem;
+    text-indent: -3rem;
+    font-size: 1.1em;
+    line-height: 1.3;
+    font-family: $sans-fonts; 
+    font-weight: $title-weight;
+}
+
+/* Images */
+/* figure {
+    display: inline-block;
+    position: relative;
+    margin: 1em 0 2em;
+    text-align: center;
+}    
+
+img {
+    margin: 0 auto;
+    border: 0 none;
+    display: block;
+    width: auto;
+    max-width: 100%;
+} */
+
+figure {
+    display: table;
+    text-align: center;
+    margin: 0 auto;
+}
+ 
+figure img { 
+    display: block;
+    max-width: 100%;
+}
+ 
+figcaption {
+    display: table-caption;
+    caption-side: bottom;
+}
+
+p img {
+    display: inline;
+}
+
+
+/* Lists */
+ol > li:before {
+    color: $color-text-body;
+    content: counter(ol, decimal) ".";
+    counter-increment: ol;
+    margin-right: 0.333em;
+    position: absolute;
+    right: 100%;
+}
+
+ul > li:before {
+    background-color: $color-text-body;
+    border-radius: 50%;
+    content: "";
+    height: 0.3em;
+    width: 0.3em;
+    margin-right: 0.5em;
+    margin-top: 0.6em;
+    position: absolute;
+    right: 100%;
+}
+
+ol, ul, dl {
+    margin-left: 3.1em;
+    padding: 0;
+    font-size: $main-text-size;
+}
+
+ol ol, ul ul, dl dl,
+dl ol, dl ul {
+    margin-left: 2em;
+    font-size: 100%;
+}
+
+dl ol, dl ul {
+    margin-bottom: 0.75em;   
+}
+
+ol p, ul p, dl p {
+    font-size: 100%;
+}
+
+dl table {
+    font-size: 80%;
+}
+
+ol {
+    counter-reset: ol;
+}
+
+li + li, dd + dt {
+    margin-top: 0em;
+}
+
+ul > li {
+    position: relative;
+}
+
+ol > li {
+    position: relative;
+}
+
+li {
+    list-style: none outside none;
+}
+
+dt {
+    font-family: $sans-fonts;
+    font-weight: 300;
+    padding-top: 0.5em;
+    font-size: 0.90em;
+}
+
+
+/* Tables */
+tbody {
+    display: table-row-group;
+}
+
+tfoot {
+    display: table-footer-group;
+}
+
+table {
+    margin-bottom: 2em;
+    font-family: $sans-fonts;
+    padding: 0;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto 2em auto;
+}
+
+table th, table td {
+    padding: 10px 10px 9px;
+    line-height: 18px;
+    text-align: left;
+    font-size: $table-size;
+    line-height: $table-leading;
+}
+
+table th {
+    padding-top: 9px;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+table td {
+    vertical-align: top;
+    border-top: 1px solid lighten($color-text-body, 80%);
+    font-weight: 300;
+}
+
+tbody tr:nth-child(odd) {
+    /* background-color: $color-text-lightest; */
+}
+
+table ul, table ol {
+    margin-top: 0;
+    margin-left: 1em;
+    font-size: 100%;
+}
+
+
+/* Captions */
+caption, figcaption {
+    font-family: $sans-fonts;
+    font-size: 1em;
+    text-align: left;
+    background: $color-text-light;
+    padding: 4px 8px;
+    margin: 4px 0;
+}
+
+figure > figcaption {
+    margin-top: 0.25em;
+}
+
+
+/* Print */
+@media print {
+    html {
+        font-size: 130%;
+    }
+
+    body {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+    }
+
+    ul > li:before {
+        height: 0.325em;
+        width: 0.325em;
+    }
+
+}

@@ -17,34 +17,7 @@ $endif$
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
-$if(thanks)$
-  <style type="text/css">
-      .acknowledgments {
-        margin: 2em;
-        color: #bfbfbf;
-      }
-  </style>
-$endif$
-$if(epigraph)$
-  <style type="text/css">
-      .epigraph-wrapper {
-        overflow: hidden;
-      }
-      .epigraph {
-        width: 65%;
-        float: right;
-        font-size: 0.9em;
-      }
 
-      .epigraph-text {
-        padding-top: 0.8em;
-      }
-
-      .epigraph-source {
-        text-align: right;
-      }
-  </style>
-$endif$
 $if(highlighting-css)$
   <style type="text/css">
 $highlighting-css$
@@ -65,36 +38,47 @@ $for(include-before)$
 $include-before$
 $endfor$
 $if(title)$
-<header>
+<header class="article-meta">
 $if(date)$
-<h3 class="date">$date$</h3>
+<p class="date">$date$</h3>
+$endif$
+$if(published)$
+<p class="published">$published$</h3>
 $endif$
 
 <h1 class="title">$title$</h1>
+$if(subtitle)$
+<p class="subtitle">$subtitle$</p>
+$endif$
 
-
+<div class="authors">
 $for(author)$
-<h2 class="author">$author.name$</h2>
-<p class="affilation"><em>$author.affiliation$</em></p>
+$if(author.url)$
+<p class="author"><a href="$author.url$">$author.name$</a></p>
+$else$
+<p class="author">$author.name$</p>
+$endif$
+<p class="affilation">$author.affiliation$</p>
 $endfor$
+</div>
 
 </header>
 $endif$
 $if(toc)$
 <nav id="$idprefix$TOC">
-$toc$
+$table-of-contents$
 </nav>
 $endif$
 
 $if(abstract)$
-<div class="small"><em>$abstract$</em></div>
+<div class="abstract">$abstract$</div>
 $endif$
 
 $if(blinded)$
 
 $else$
 $if(thanks)$
-<div class="small acknowledgments"><em>Acknowledgments:</em> <em>$thanks$</em></div>
+<div class="acknowledgments"><em>Acknowledgments:</em> $thanks$</div>
 $endif$
 $endif$
 
@@ -103,14 +87,10 @@ $if(epigraph)$
   <div class="epigraph">
   $for(epigraph)$
     $if(epigraph.source)$
-    <!-- <div class="epigraph"> -->
         <p class="epigraph-text">$epigraph.text$</p>
         <p class="epigraph-source">&mdash;$epigraph.source$</p>
-    <!-- </div> -->
     $else$
-    <!-- <div class="epigraph"> -->
         <p class="epigraph-text">$epigraph.text$</p>
-    <!-- </div> -->
     $endif$
   $endfor$
   </div>
@@ -118,11 +98,13 @@ $if(epigraph)$
 $endif$
 
 $if(keywords)$
-<!-- <br>
-<div class="small"><em>Keywords:</em> $keywords$</div> -->
-
+<!-- <div class="small"><em>Keywords:</em> $keywords$</div> -->
 $endif$
 
 $body$
+
+$for(include-after)$
+$include-after$
+$endfor$
 </body>
 </html>
