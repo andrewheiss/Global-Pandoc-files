@@ -1,4 +1,6 @@
 %!TEX program = xelatex
+% Adapted in part from Nicholas Reith's Journal Article Manuscript Template
+% https://www.overleaf.com/latex/templates/journal-article-manuscript-template/yhxfrgxqdthx
 \documentclass[letterpaper,12pt]{article}
 
 % ---------------
