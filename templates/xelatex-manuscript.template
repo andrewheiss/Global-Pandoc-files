@@ -166,13 +166,9 @@
 % NB: footmisc has to come after setspace and biblatex because of conflicts
 \usepackage[bottom, flushmargin]{footmisc}
 \renewcommand*{\footnotelayout}{\normalsize}
-% \setlength{\footnotesep}{14pt}
-% \addtolength{\footnotesep}{5mm} % change to 1mm
 
 \addtolength{\skip\footins}{12pt}    % vertical space between rule and main text
 \setlength{\footnotesep}{16pt}  % vertical space between footnotes
-% \skip\footins 8pt plus 2pt minus 4pt  % Space between last line of body text 
-%                                        % and first line of footnote
 
 
 \begin{document}
