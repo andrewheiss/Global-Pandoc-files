@@ -14,7 +14,6 @@ $if(tables)$
 
 % Remove left margin in lists inside longtables
 % https://tex.stackexchange.com/a/378190/11851
-\usepackage{enumitem}
 \usepackage{etoolbox}
 \AtBeginEnvironment{longtable} {\setlist[itemize]{nosep, wide=0pt, leftmargin=*, before=\vspace*{-\baselineskip}, after=\vspace*{-\baselineskip}}}
 
@@ -194,6 +193,15 @@ $else$
     \setmathfont{Libertinus Math}
 $endif$
 
+$if(toc)$
+\makeatletter
+\renewcommand\@tocmaketitle{%
+  \section*{\contentsname}
+  \tocmark%
+  \@afterheading}
+\makeatother
+$endif$
+
 
 \begin{document}
 \setkeys{Gin}{width=1\textwidth}
@@ -237,7 +245,7 @@ $if(toc)$
 {
 \hypersetup{linkcolor=black}
 \setcounter{tocdepth}{$toc-depth$}
-\tableofcontents
+\tableofcontents*
 }
 $endif$
 
