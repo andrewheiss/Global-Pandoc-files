@@ -200,6 +200,7 @@ small {
 .footnote-ref, sup {
   font-size: 0.9rem;
   vertical-align: super;
+  line-height: 0;
 }
 
 .footnotes {
