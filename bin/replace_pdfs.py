@@ -38,7 +38,8 @@ output = args.output
 convert = args.convert
 
 # Find images
-md_images = re.compile(r"!\[([^\[]*)\]\(([^\)]+)\)")
+# md_images = re.compile(r"!\[([^\[]*)\]\(([^\)]+)\)")
+md_images = re.compile(r"!\[(.*)\]\((.*)\)")
 
 
 # Convert a list of PDFs to PNGs
