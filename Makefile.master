@@ -129,7 +129,7 @@ bib:	$(BIB)
 		--default-image-extension=png \
 		--mathjax \
 		--template=$(PREFIX)/templates/html.template \
-		--css=$(PREFIX)/styles/marked/kultiad-serif.css \
+		--css=$(PREFIX)/styles/ath-clean/ath-clean.css \
 		--filter pandoc-citeproc \
 		--csl=$(PREFIX)/csl/$(CSL).csl \
 		--bibliography=$(BIB_FILE) \
