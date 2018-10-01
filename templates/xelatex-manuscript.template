@@ -59,6 +59,9 @@
 % Page margins
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 
+% Ensure that figures are floated where or after they're defined
+\usepackage{flafter}
+
 % Headers from page 2 on
 \usepackage{fancyhdr}
 \setlength{\headheight}{0.25in}
