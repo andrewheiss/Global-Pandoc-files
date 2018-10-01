@@ -46,6 +46,9 @@
 % Authors
 \usepackage{authblk} % For multiple authors
 
+% Keywords
+\providecommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
+
 
 % ------------------
 % PAGE LAYOUT STFF
