@@ -67,6 +67,7 @@ def move_to_end(text):
     joined_figures = '\n\n'.join([x.strip() for x in figures])
     return(joined_text + '\n\n# Tables\n\n Manually add tables here' +
            '\n\n# Figures\n\n' + joined_figures + '\n')
+    # return(joined_text + '\n\n\clearpage \n\n' + joined_figures + '\n\n' + '\clearpage \n\n')
 
 with output as f:
     f.write(move_to_end(input_text))
