@@ -262,8 +262,12 @@ $if(toc)$
 \hypersetup{linkcolor=black}
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
+$if(toc-figures)$
 \listoffigures
+$endif$
+$if(toc-tables)$
 \listoftables
+$endif$
 }
 $endif$
 
